@@ -1,0 +1,3 @@
+/Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/build/CMakeFiles/CLIENT_SOCKET.dir
+/Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/build/CMakeFiles/edit_cache.dir
+/Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/build/CMakeFiles/rebuild_cache.dir

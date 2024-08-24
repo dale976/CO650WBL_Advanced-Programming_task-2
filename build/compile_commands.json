@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/src -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk -o CMakeFiles/CLIENT_SOCKET.dir/src/main.cpp.o -c /Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/src/main.cpp",
+  "file": "/Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/src/main.cpp",
+  "output": "CMakeFiles/CLIENT_SOCKET.dir/src/main.cpp.o"
+}
+]
