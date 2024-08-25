@@ -117,41 +117,153 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named CLIENT_SOCKET
+# Target rules for targets named Client
 
 # Build rule for target.
-CLIENT_SOCKET: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CLIENT_SOCKET
-.PHONY : CLIENT_SOCKET
+Client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Client
+.PHONY : Client
 
 # fast build rule for target.
-CLIENT_SOCKET/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIENT_SOCKET.dir/build.make CMakeFiles/CLIENT_SOCKET.dir/build
-.PHONY : CLIENT_SOCKET/fast
+Client/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
+.PHONY : Client/fast
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+#=============================================================================
+# Target rules for targets named Server
+
+# Build rule for target.
+Server: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Server
+.PHONY : Server
+
+# fast build rule for target.
+Server/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
+.PHONY : Server/fast
+
+src/Client.o: src/Client.cpp.o
+.PHONY : src/Client.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIENT_SOCKET.dir/build.make CMakeFiles/CLIENT_SOCKET.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+src/Client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Client.cpp.o
+.PHONY : src/Client.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+src/Client.i: src/Client.cpp.i
+.PHONY : src/Client.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIENT_SOCKET.dir/build.make CMakeFiles/CLIENT_SOCKET.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+src/Client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Client.cpp.i
+.PHONY : src/Client.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+src/Client.s: src/Client.cpp.s
+.PHONY : src/Client.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIENT_SOCKET.dir/build.make CMakeFiles/CLIENT_SOCKET.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/Client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Client.cpp.s
+.PHONY : src/Client.cpp.s
+
+src/Comms.o: src/Comms.cpp.o
+.PHONY : src/Comms.o
+
+# target to build an object file
+src/Comms.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Comms.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Comms.cpp.o
+.PHONY : src/Comms.cpp.o
+
+src/Comms.i: src/Comms.cpp.i
+.PHONY : src/Comms.i
+
+# target to preprocess a source file
+src/Comms.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Comms.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Comms.cpp.i
+.PHONY : src/Comms.cpp.i
+
+src/Comms.s: src/Comms.cpp.s
+.PHONY : src/Comms.s
+
+# target to generate assembly for a file
+src/Comms.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Comms.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Comms.cpp.s
+.PHONY : src/Comms.cpp.s
+
+src/Server.o: src/Server.cpp.o
+.PHONY : src/Server.o
+
+# target to build an object file
+src/Server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server.cpp.o
+.PHONY : src/Server.cpp.o
+
+src/Server.i: src/Server.cpp.i
+.PHONY : src/Server.i
+
+# target to preprocess a source file
+src/Server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server.cpp.i
+.PHONY : src/Server.cpp.i
+
+src/Server.s: src/Server.cpp.s
+.PHONY : src/Server.s
+
+# target to generate assembly for a file
+src/Server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/Server.cpp.s
+.PHONY : src/Server.cpp.s
+
+src/main_client.o: src/main_client.cpp.o
+.PHONY : src/main_client.o
+
+# target to build an object file
+src/main_client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/main_client.cpp.o
+.PHONY : src/main_client.cpp.o
+
+src/main_client.i: src/main_client.cpp.i
+.PHONY : src/main_client.i
+
+# target to preprocess a source file
+src/main_client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/main_client.cpp.i
+.PHONY : src/main_client.cpp.i
+
+src/main_client.s: src/main_client.cpp.s
+.PHONY : src/main_client.s
+
+# target to generate assembly for a file
+src/main_client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/main_client.cpp.s
+.PHONY : src/main_client.cpp.s
+
+src/main_server.o: src/main_server.cpp.o
+.PHONY : src/main_server.o
+
+# target to build an object file
+src/main_server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/main_server.cpp.o
+.PHONY : src/main_server.cpp.o
+
+src/main_server.i: src/main_server.cpp.i
+.PHONY : src/main_server.i
+
+# target to preprocess a source file
+src/main_server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/main_server.cpp.i
+.PHONY : src/main_server.cpp.i
+
+src/main_server.s: src/main_server.cpp.s
+.PHONY : src/main_server.s
+
+# target to generate assembly for a file
+src/main_server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/src/main_server.cpp.s
+.PHONY : src/main_server.cpp.s
 
 # Help Target
 help:
@@ -161,10 +273,23 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... CLIENT_SOCKET"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... Client"
+	@echo "... Server"
+	@echo "... src/Client.o"
+	@echo "... src/Client.i"
+	@echo "... src/Client.s"
+	@echo "... src/Comms.o"
+	@echo "... src/Comms.i"
+	@echo "... src/Comms.s"
+	@echo "... src/Server.o"
+	@echo "... src/Server.i"
+	@echo "... src/Server.s"
+	@echo "... src/main_client.o"
+	@echo "... src/main_client.i"
+	@echo "... src/main_client.s"
+	@echo "... src/main_server.o"
+	@echo "... src/main_server.i"
+	@echo "... src/main_server.s"
 .PHONY : help
 
 

@@ -14,6 +14,12 @@
 # EXTERNAL cache entries
 ########################
 
+//Build the client code
+BUILD_CLIENT:BOOL=ON
+
+//Build the server code
+BUILD_SERVER:BOOL=ON
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=CMAKE_ADDR2LINE-NOTFOUND
 
@@ -145,7 +151,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=MyProject
+CMAKE_PROJECT_NAME:STATIC=TCP_CHAT_APP
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=1.0
@@ -235,6 +241,15 @@ MyProject_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 MyProject_SOURCE_DIR:STATIC=/Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION
+
+//Value Computed by CMake
+TCP_CHAT_APP_BINARY_DIR:STATIC=/Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/build
+
+//Value Computed by CMake
+TCP_CHAT_APP_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+TCP_CHAT_APP_SOURCE_DIR:STATIC=/Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION
 
 
 ########################

@@ -63,7 +63,8 @@ CMAKE_BINARY_DIR = /Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/CLIENT_SOCKET.dir/all
+all: CMakeFiles/Client.dir/all
+all: CMakeFiles/Server.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +72,61 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/CLIENT_SOCKET.dir/clean
+clean: CMakeFiles/Client.dir/clean
+clean: CMakeFiles/Server.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/CLIENT_SOCKET.dir
+# Target rules for target CMakeFiles/Client.dir
 
 # All Build rule for target.
-CMakeFiles/CLIENT_SOCKET.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIENT_SOCKET.dir/build.make CMakeFiles/CLIENT_SOCKET.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIENT_SOCKET.dir/build.make CMakeFiles/CLIENT_SOCKET.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/build/CMakeFiles --progress-num=1,2 "Built target CLIENT_SOCKET"
-.PHONY : CMakeFiles/CLIENT_SOCKET.dir/all
+CMakeFiles/Client.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/build/CMakeFiles --progress-num=1,2,3,4 "Built target Client"
+.PHONY : CMakeFiles/Client.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/CLIENT_SOCKET.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/CLIENT_SOCKET.dir/all
+CMakeFiles/Client.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/build/CMakeFiles 0
-.PHONY : CMakeFiles/CLIENT_SOCKET.dir/rule
+.PHONY : CMakeFiles/Client.dir/rule
 
 # Convenience name for target.
-CLIENT_SOCKET: CMakeFiles/CLIENT_SOCKET.dir/rule
-.PHONY : CLIENT_SOCKET
+Client: CMakeFiles/Client.dir/rule
+.PHONY : Client
 
 # clean rule for target.
-CMakeFiles/CLIENT_SOCKET.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CLIENT_SOCKET.dir/build.make CMakeFiles/CLIENT_SOCKET.dir/clean
-.PHONY : CMakeFiles/CLIENT_SOCKET.dir/clean
+CMakeFiles/Client.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/clean
+.PHONY : CMakeFiles/Client.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Server.dir
+
+# All Build rule for target.
+CMakeFiles/Server.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/build/CMakeFiles --progress-num=5,6,7,8 "Built target Server"
+.PHONY : CMakeFiles/Server.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Server.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Server.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/daleal/Workspace/UNI/CO650WBL_TASK-2_CHAT-APPLICATION/build/CMakeFiles 0
+.PHONY : CMakeFiles/Server.dir/rule
+
+# Convenience name for target.
+Server: CMakeFiles/Server.dir/rule
+.PHONY : Server
+
+# clean rule for target.
+CMakeFiles/Server.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/clean
+.PHONY : CMakeFiles/Server.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
