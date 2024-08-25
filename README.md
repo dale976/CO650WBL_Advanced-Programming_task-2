@@ -1,23 +1,23 @@
 # CO650WBL_Advanced-Programming_task-2
-Server/Client TCP Chat application (C++)
+## Server/Client TCP Chat application (C++)
 
-Uses CMake for build and compilation
+#### Uses CMake for build and compilation
 
-Build only client:
+### Build only client:
 mkdir build && cd build
 cmake -DBUILD_SERVER=OFF ..
 make
 
-Run client:
+### Run client:
 cd build
 ./Client
 
-Build only server:
+### Build only server:
 mkdir build && cd build
 cmake -DBUILD_CLIENT=OFF ..
 make
 
-Run server:
+### Run server:
 cd build
 ./Server
 
