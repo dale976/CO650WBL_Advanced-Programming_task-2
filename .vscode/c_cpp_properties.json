@@ -6,7 +6,7 @@
                 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin",
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/src/**",
-                "${workspaceFolder}/src/client/*",
+                "${workspaceFolder}/include/**",
             ],
             "defines": [],
             "macFrameworkPath": [

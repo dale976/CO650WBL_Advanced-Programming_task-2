@@ -1,6 +1,7 @@
 #include "Server.h"
 
 int main() {
-    serverFunction();
+    Server server = Server();
+    server.connect();
     return 0;
 }

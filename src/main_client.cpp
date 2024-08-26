@@ -1,6 +1,7 @@
 #include "Client.h"
 
 int main() {
-    clientFunction();
+    Client client = Client();
+    client.connect();
     return 0;
 }
