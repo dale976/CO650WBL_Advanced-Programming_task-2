@@ -30,7 +30,7 @@ class Comms {
         };
         void closeConnetion(){
             cout << "Comms close connection" << endl;
-            if (base_socket != -1) {
+            if (base_socket != 0) {
                 close(base_socket);
                 cout << "Connection Closed" << endl;
             }
