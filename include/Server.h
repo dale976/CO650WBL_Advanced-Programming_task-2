@@ -11,6 +11,7 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <pthread.h>
 
 using namespace std;
 
@@ -20,6 +21,39 @@ private:
     const string response = "Message received";
     char host[NI_MAXHOST];
     int client_socket;
+    pthread_t receive_t, send_t;
+    static void* receiveMessages(void* arg) {
+        Server* server = static_cast<Server*>(arg);
+        // Keep receiving messages until the client disconnects
+        int valread;
+        while ((valread = recv(server->client_socket, server->buffer, sizeof(server->buffer), 0)) > 0) {
+            server->buffer[valread] = '\0'; // Null-terminate the received data
+            cout << "Message received: " << server->buffer << endl;
+            // Send a response to the client
+            server->send(server->response);
+            cout << "Response sent to client" << endl;
+        }
+        
+        if (valread == 0) {
+            cout << "Client disconnected" << endl;
+        } else if (valread < 0) {
+            cerr << "recv() error" << endl;
+        }
+        return nullptr;
+    };
+    static void* sendMessages(void* arg){
+        Server* server = static_cast<Server*>(arg);
+        string msg;
+        while (true) {
+            cout << "Enter message to send: ";
+            getline(cin, msg);
+            server->send(msg);
+            if (msg == "QUIT") {
+                break;
+            }
+        }
+        return nullptr;
+    };
 public: 
     Server() : client_socket(-1) {};
     ~Server() {
@@ -56,26 +90,18 @@ public:
             handleError("client accept fail");
         }
     };
-    void receive() {
-        // Keep receiving messages until the client disconnects
-        int valread;
-        while ((valread = recv(client_socket, buffer, sizeof(buffer), 0)) > 0) {
-            buffer[valread] = '\0'; // Null-terminate the received data
-            cout << "Message received: " << buffer << endl;
-            // Send a response to the client
-            send(response);
-            cout << "Response sent to client" << endl;
-        }
-        
-        if (valread == 0) {
-            cout << "Client disconnected" << endl;
-        } else if (valread < 0) {
-            cerr << "recv() error" << endl;
-        }
-    };
     void send(const string &msg){
         ::send(client_socket, msg.c_str(), msg.length(), 0);
     };
+    void sendAndReceive() {
+        // create threads
+        pthread_create(&receive_t, nullptr, receiveMessages, this);
+        pthread_create(&send_t, nullptr, sendMessages, this);
+        // join threads
+        pthread_join(receive_t, nullptr);
+        pthread_join(send_t, nullptr);
+    }
+    
 };
 
 

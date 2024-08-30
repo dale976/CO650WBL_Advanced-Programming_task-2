@@ -11,20 +11,20 @@ int main() {
     if (server.initialise()) {
         server.connect();
         server.acceptClient();
-        server.receive();
+        server.sendAndReceive();
         // server.send("SOME SERVER MESSAGE");
     }
 
-    while(true) {
-        cout << "Enter message to client: " << endl;
-        getline(cin, message);
+    // while(true) {
+    //     cout << "Enter message to client: " << endl;
+    //     getline(cin, message);
 
-        if (message == "QUIT") {
-            break;
-        }
+    //     if (message == "QUIT") {
+    //         break;
+    //     }
 
-        server.send(message);
-    }
+    //     server.send(message);
+    // }
 
     return 0;
 }
