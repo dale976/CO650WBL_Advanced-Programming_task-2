@@ -22,7 +22,7 @@ class Comms {
         bool initialise() {
             cout << "Comms socket initialise" << endl;
             skt = socket(AF_INET, SOCK_STREAM, 0);
-            if (skt == -1) {
+            if (skt < 0) {
                 handleError("Error creating socket");
                 return false;
             }
@@ -39,7 +39,7 @@ class Comms {
         const int PORT = 5400;
         const string IP_ADDRESS = "127.0.0.1";
         int skt;
-        sockaddr_in address;
+        sockaddr_in service;
 
         virtual void connect() = 0; // override in subclass
 

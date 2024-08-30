@@ -23,12 +23,42 @@ private:
     // char buffer[1024] = {0}; // Buffer to store the received message
     // const char *response = "Message received";
 
-    // char host[NI_MAXHOST];
-
+    char host[NI_MAXHOST];
+    int newSkt;
 public: 
-    Server();
-    ~Server();
-    void connect();
+    Server() : newSkt(-1) {
+        if(!initialise()) {
+            handleError("Server: Initialise Socket failed");
+        }
+    } ;
+    ~Server() {
+        if (newSkt != -1) {
+            close(newSkt);
+            newSkt = -1; 
+        }
+    };
+    void connect() override {
+        service.sin_family = AF_INET; // IPV4
+        service.sin_port = htons(PORT); // PORT
+        // move to helper function or base method
+        // verifies the conversion of an IP address from its string representation to binary form 
+        if(inet_pton(AF_INET, IP_ADDRESS.c_str(), &service.sin_addr) <= 0) {
+            handleError("Invalid IP address or inet_pton failed");
+        }
+
+        if (bind(skt, (sockaddr *)&service, sizeof(service)) < 0) {
+            handleError("bind() failed");
+        }
+        
+        if (listen(skt, SOMAXCONN) == -1) {
+            handleError("Listen failed");
+        }
+
+        cout << "Server ready; listening for connections on port " << PORT << endl;
+    };
+    void acceptClient() {};
+    void send(){};
+    void receive() {};
 };
 
 

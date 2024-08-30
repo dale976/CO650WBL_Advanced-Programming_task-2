@@ -3,25 +3,25 @@
 #include <iostream>
 
 #ifdef BUILD_SERVER
-Server::Server(){
-    std::cout << "This is the server constructor." << std::endl;
+// Server::Server(){
+//     std::cout << "This is the server constructor." << std::endl;
 
-    // sockaddr_in serverSocket;
-    // sockaddr_in service;
-    // string address = "127.0.0.1";
-    // char buffer[1024] = {0}; // Buffer to store the received message
-    // const char *response = "Message received";
+//     // sockaddr_in serverSocket;
+//     // sockaddr_in service;
+//     // string address = "127.0.0.1";
+//     // char buffer[1024] = {0}; // Buffer to store the received message
+//     // const char *response = "Message received";
 
-    // char host[NI_MAXHOST];
-}
+//     // char host[NI_MAXHOST];
+// }
 
-Server::~Server(){
-    std::cout << "This is the server destructor." << std::endl;
-}
+// Server::~Server(){
+//     std::cout << "This is the server destructor." << std::endl;
+// }
 
-void Server::connect() {
-    cout << "connect from server not comms" << endl;
-}
+// void Server::connect() {
+//     cout << "connect from server not comms" << endl;
+// }
 
 // void Server::createSocket() {
 //     std::cout << "This is the server function." << std::endl;

@@ -28,6 +28,22 @@ class Client : public Comms {
         void connect() {
             cout << "connect from client not comms" << endl;
             cout << PORT << endl;
+            service.sin_family = AF_INET;
+            service.sin_port = htons(PORT);
+
+            // verifies the conversion of an IP address from its string representation to binary form 
+            if(inet_pton(AF_INET, IP_ADDRESS.c_str(), &service.sin_addr) <= 0) {
+                handleError("Invalid IP address or inet_pton failed");
+            } else {
+                cout << "inet_pton successful" << endl;
+            }
+
+            // use the scope resolution operator as connect already exists as a method on the base class
+            int connectRes = ::connect(skt, (sockaddr*)&service, sizeof(service));
+            if (connectRes == -1) {
+                handleError("error with connection");
+            }
+            cout << "connection okay - now connected to Server " << endl;
         };
         // send();
         // receive();
