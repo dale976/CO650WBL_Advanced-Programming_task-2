@@ -12,7 +12,7 @@ using namespace std;
 
 class Comms {
     public:
-        Comms(): skt(-1){
+        Comms(): base_socket(-1){
             cout << "Comms constructor" << endl;
         }; // any other constructor code?
         virtual ~Comms(){
@@ -21,8 +21,8 @@ class Comms {
         }; // destructor to be overriden in subclass
         bool initialise() {
             cout << "Comms socket initialise" << endl;
-            skt = socket(AF_INET, SOCK_STREAM, 0);
-            if (skt < 0) {
+            base_socket = socket(AF_INET, SOCK_STREAM, 0);
+            if (base_socket < 0) {
                 handleError("Error creating socket");
                 return false;
             }
@@ -30,15 +30,15 @@ class Comms {
         };
         void closeConnetion(){
             cout << "Comms close connection" << endl;
-            if (skt != -1) {
-                close(skt);
+            if (base_socket != -1) {
+                close(base_socket);
                 cout << "Connection Closed" << endl;
             }
         };
     protected: // Make protected so only this class and any subclasses can access the following members
         const int PORT = 5400;
         const string IP_ADDRESS = "127.0.0.1";
-        int skt;
+        int base_socket;
         sockaddr_in service;
 
         virtual void connect() = 0; // override in subclass
