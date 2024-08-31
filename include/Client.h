@@ -10,13 +10,44 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+
 using namespace std;
 
 class Client : public Comms {
+    private:
+        char buffer[1024] = {0}; // Buffer to store the received message
+        pthread_t receive_t, send_t;
+        static void* receiveMessage(void* arg) {
+            Client* client = (Client*)arg;
+            // Keep receiving messages until the client disconnects
+            int valread;
+            while ((valread = recv(client->base_socket, client->buffer, sizeof(client->buffer), 0)) > 0) {
+                client->buffer[valread] = '\0'; // Null-terminate the received data
+                cout << "\rMessage received: " << client->buffer << endl;
+                cout.flush();
+                cout << "Enter message to send: ";
+                cout.flush();
+            }
+            return nullptr;
+        };
+        static void* sendMessage(void* arg) {
+            Client* client = (Client*)arg;
+            string msg;
+            while (true) {
+                cout << "Enter message to send: ";
+                getline(cin, msg);
+                client->send(msg);
+                if (msg == "QUIT") {
+                    client->closeConnetion();
+                    break;
+                }
+            }
+            return nullptr;
+        }
     public:
         Client(){};
         ~Client(){};
-        void connect() {
+        void connect() override {
             cout << "connect from client not comms" << endl;
             cout << PORT << endl;
             service.sin_family = AF_INET;
@@ -36,14 +67,17 @@ class Client : public Comms {
             }
             cout << "connection okay - now connected to Server on port " << PORT << endl;
         };
-        void receive() {
-            char buffer[1024] = {0}; // Buffer to store the received message
-            int valread = read(base_socket, buffer, sizeof(buffer));
-            cout << "Message from server received: " << buffer << endl;
-        };
-        void send(const string &msg) {
+        void send(const string &msg) override {
             ::send(base_socket, msg.c_str(), msg.length(), 0);
         };
+        void sendAndReceive() override {
+            // create threads
+            pthread_create(&receive_t, nullptr, receiveMessage, this);
+            pthread_create(&send_t, nullptr, sendMessage, this);
+            // join threads
+            pthread_join(receive_t, nullptr);
+            pthread_join(send_t, nullptr);
+        }
 };
 
 

@@ -9,20 +9,8 @@ int main() {
 
     if (client.initialise()) {
         client.connect();
+        client.sendAndReceive();
     }
-
-    while(true) {
-        cout << "Enter message to server: " << endl;
-        getline(cin, message);
-
-        if (message == "QUIT") {
-            break;
-        }
-
-        client.send(message);
-        client.receive();
-    }
-    
 
     return 0;
 }

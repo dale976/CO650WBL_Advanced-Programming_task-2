@@ -41,7 +41,9 @@ class Comms {
         int base_socket;
         sockaddr_in service;
 
-        virtual void connect() = 0; // override in subclass
+        virtual void connect(){}; // override in subclass
+        virtual void send(const string &msg){}; // override in subclass
+        virtual void sendAndReceive() {}; // override in subclass
 
         void handleError(const string &msg){
             cerr << msg << endl;

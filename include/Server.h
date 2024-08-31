@@ -22,36 +22,32 @@ private:
     char host[NI_MAXHOST];
     int client_socket;
     pthread_t receive_t, send_t;
-    static void* receiveMessages(void* arg) {
-        Server* server = static_cast<Server*>(arg);
+    static void* receiveMessage(void* arg) {
+        Server* server = (Server*)arg;
         // Keep receiving messages until the client disconnects
         int valread;
         while ((valread = recv(server->client_socket, server->buffer, sizeof(server->buffer), 0)) > 0) {
             server->buffer[valread] = '\0'; // Null-terminate the received data
-            cout << "Message received: " << server->buffer << endl;
-            // Send a response to the client
-            server->send(server->response);
-            cout << "Response sent to client" << endl;
+            cout << "\rMessage received: " << server->buffer << endl;
+            cout.flush();
+
+            cout << "Send a response to the client: ";
+            cout.flush();
+            string msg;
+            getline(cin, msg);
+            server->send(msg);
+            cout << "Message sent: " << endl;
         }
         
         if (valread == 0) {
             cout << "Client disconnected" << endl;
+            cout.flush();
+            
         } else if (valread < 0) {
             cerr << "recv() error" << endl;
+            cout.flush();
         }
-        return nullptr;
-    };
-    static void* sendMessages(void* arg){
-        Server* server = static_cast<Server*>(arg);
-        string msg;
-        while (true) {
-            cout << "Enter message to send: ";
-            getline(cin, msg);
-            server->send(msg);
-            if (msg == "QUIT") {
-                break;
-            }
-        }
+
         return nullptr;
     };
 public: 
@@ -63,8 +59,8 @@ public:
         }
     };
     void connect() override {
-        service.sin_family = AF_INET; // IPV4
-        service.sin_port = htons(PORT); // PORT
+        service.sin_family = AF_INET;
+        service.sin_port = htons(PORT);
         // move to helper function or base method
         // verifies the conversion of an IP address from its string representation to binary form 
         if(inet_pton(AF_INET, IP_ADDRESS.c_str(), &service.sin_addr) == -1) {
@@ -90,16 +86,14 @@ public:
             handleError("client accept fail");
         }
     };
-    void send(const string &msg){
+    void send(const string &msg) override {
         ::send(client_socket, msg.c_str(), msg.length(), 0);
     };
-    void sendAndReceive() {
+    void sendAndReceive() override {
         // create threads
-        pthread_create(&receive_t, nullptr, receiveMessages, this);
-        pthread_create(&send_t, nullptr, sendMessages, this);
+        pthread_create(&receive_t, nullptr, receiveMessage, this);
         // join threads
         pthread_join(receive_t, nullptr);
-        pthread_join(send_t, nullptr);
     }
     
 };
