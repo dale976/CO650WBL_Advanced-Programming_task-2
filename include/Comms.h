@@ -19,7 +19,7 @@ class Comms {
         const int PORT = 5400;
         const string IP_ADDRESS = "127.0.0.1";
         int base_socket;
-        sockaddr_in service;
+        sockaddr_in base_service;
         // pure virtual methods, 0 value to indicate to the compiler that this is an empty method
         virtual void connect() = 0;
         virtual void send(const string &msg) = 0;

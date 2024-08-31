@@ -59,15 +59,15 @@ public:
         }
     };
     void connect() override {
-        service.sin_family = AF_INET;
-        service.sin_port = htons(PORT);
+        base_service.sin_family = AF_INET;
+        base_service.sin_port = htons(PORT);
         // move to helper function or base method
         // verifies the conversion of an IP address from its string representation to binary form 
-        if(inet_pton(AF_INET, IP_ADDRESS.c_str(), &service.sin_addr) == -1) {
+        if(inet_pton(AF_INET, IP_ADDRESS.c_str(), &base_service.sin_addr) == -1) {
             handleError("Invalid IP address or inet_pton failed");
         }
 
-        if (bind(base_socket, (sockaddr *)&service, sizeof(service)) == -1) {
+        if (bind(base_socket, (sockaddr *)&base_service, sizeof(base_service)) == -1) {
             handleError("bind() failed");
         }
         
@@ -78,9 +78,9 @@ public:
         cout << "Server ready; listening for connections on port " << PORT << endl;
     };
     void acceptClient() {
-        socklen_t clientSize = sizeof(service);
+        socklen_t clientSize = sizeof(base_service);
 
-        client_socket = accept(base_socket, (sockaddr*)&service, &clientSize);
+        client_socket = accept(base_socket, (sockaddr*)&base_service, &clientSize);
 
         if (client_socket == -1) {
             handleError("client accept fail");
