@@ -26,8 +26,7 @@ public:
     void connect() override;
     void acceptClient();
     void send(const string &msg) override;
-    void sendAndReceive() override;
-    
+    void sendAndReceive() override;   
 };
 
 #endif // SERVER_H
