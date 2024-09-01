@@ -3,10 +3,6 @@
 
 using namespace std;
 
-void sharedFunction() {
-    std::cout << "This is a shared function." << std::endl;
-}
-
 Comms::Comms(): base_socket(-1){
     cout << "Comms constructor" << endl;
 };
