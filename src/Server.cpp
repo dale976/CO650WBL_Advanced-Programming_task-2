@@ -57,26 +57,24 @@ void* Server::receiveMessage(void* arg) {
     Server* server = (Server*)arg;
     // Keep receiving messages until the client disconnects
     int valread;
-    while ((valread = recv(server->client_socket, server->buffer, sizeof(server->buffer), 0)) > 0) {
-        server->buffer[valread] = '\0'; // Null-terminate the received data
-        cout << "\rMessage received: " << server->buffer << endl;
-        cout.flush();
-
-        cout << "Send a response to the client: ";
-        cout.flush();
-        string msg;
-        getline(cin, msg);
-        server->send(msg);
-        cout << "Message sent: " << endl;
-    }
-    
-    if (valread == 0) {
-        cout << "Client disconnected" << endl;
-        cout.flush();
-        
-    } else if (valread < 0) {
-        cerr << "recv() error" << endl;
-        cout.flush();
+    // while ((valread = recv(server->client_socket, server->buffer, sizeof(server->buffer), 0)) > 0) {
+    while (true) {
+        valread = recv(server->client_socket, server->buffer, sizeof(server->buffer), 0);
+        if (valread > 0) {
+            server->buffer[valread] = '\0'; // Null-terminate the received data
+            cout << "\rMessage received: " << server->buffer << endl;
+            cout << "Send a response to the client: ";
+            cout.flush();
+            string msg;
+            getline(cin, msg);
+            server->send(msg);
+        } else if (valread == 0) {
+            cout << "Client disconnected" << endl;
+            break;
+        } else if (valread < 0) {
+            server->handleError("Server::receiveMessage() error");
+            break;
+        }
     }
 
     return nullptr;
