@@ -4,7 +4,6 @@
 using namespace std;
 
 int main() {
-    cout << "main_server" << endl;
     Server server;
     string message;
 

@@ -1,7 +1,10 @@
 # CO650WBL_Advanced-Programming_task-2
-### Server/Client TCP Chat application (C++)
+## Server/Client TCP Chat application (C++)
 
-### Uses CMake for build and compilation
+An OOP Server and Client project written in C++
+
+Utilises CMAKE to enable building either the Server executable or the Client.
+
 
 ### Build only client:
 ```
@@ -28,7 +31,7 @@ make
 cd build
 ./Server
 ```
-
+### VS Code
 In VS Code, the launch JSON and the tasks files have been created to allow build and execution within VS Code using the CMake extension.
 
 All executables can be compiled, or a single one can be selected

@@ -7,11 +7,8 @@ Client::Client() {}
 Client::~Client() {}
 
 void Client::connect() {
-    cout << "connect from client not comms" << endl;
-    cout << PORT << endl;
     base_service.sin_family = AF_INET;
     base_service.sin_port = htons(PORT);
-
     // verifies the conversion of an IP address from its string representation to binary form 
     if(inet_pton(AF_INET, IP_ADDRESS.c_str(), &base_service.sin_addr) <= 0) {
         handleError("Invalid IP address or inet_pton failed");
@@ -68,6 +65,5 @@ void* Client::receiveMessage(void* arg) {
     }
     return nullptr;
 }
-
 
 #endif

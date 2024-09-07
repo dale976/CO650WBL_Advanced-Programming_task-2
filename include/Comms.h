@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef SHARED_H
 #define SHARED_H
 
@@ -24,7 +26,6 @@ class Comms {
         virtual void connect() = 0;
         virtual void send(const string &msg) = 0;
         virtual void sendAndReceive() = 0;
-
         void handleError(const string &msg);
 };
 

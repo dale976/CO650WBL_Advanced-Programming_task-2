@@ -57,7 +57,6 @@ void* Server::receiveMessage(void* arg) {
     Server* server = (Server*)arg;
     // Keep receiving messages until the client disconnects
     int valread;
-    // while ((valread = recv(server->client_socket, server->buffer, sizeof(server->buffer), 0)) > 0) {
     while (true) {
         valread = recv(server->client_socket, server->buffer, sizeof(server->buffer), 0);
         if (valread > 0) {
